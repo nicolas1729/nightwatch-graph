@@ -21,13 +21,13 @@ export default class Gradient extends HTMLElement {
     timelineWrapper.appendChild(timelineProgressbar);
 
 
-    const timelineBlock = this.buildBlock('10 Janvier 2020 12:50')
+    const timelineBlock = this.buildBlock('10 Janvier 2020 12:50');
     timelineWrapper.appendChild(timelineBlock);
 
-    const timelineBlock2 = this.buildBlock('10 Janvier 2020 12:51')
+    const timelineBlock2 = this.buildBlock('10 Janvier 2020 12:51');
     timelineWrapper.appendChild(timelineBlock2);
 
-    const timelineBlock3 = this.buildBlock('10 Janvier 2020 12:52')
+    const timelineBlock3 = this.buildBlock('10 Janvier 2020 12:52');
     timelineWrapper.appendChild(timelineBlock3);
     
 

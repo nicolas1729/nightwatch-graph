@@ -13,6 +13,7 @@ export class GraphProvider extends Disposable implements vscode.TextDocumentCont
     panelWindow: vscode.WebviewPanel;
     private listFile:{fileName:string, dateCreation:Date, size:number}[] = [];
 	private htmlListFile = '<table>';
+	private data = "test";
 
     constructor(context: vscode.ExtensionContext) {
 		super();
@@ -84,7 +85,8 @@ export class GraphProvider extends Disposable implements vscode.TextDocumentCont
 
 		let body = `<body>
 				<div class="container" style="margin-top: 60px;">
-					<gradient-theme data=${this.htmlListFile}>
+					${this.htmlListFile}
+					<gradient-theme data=${this.data}>
 				</div>
 			</body>`;
 
