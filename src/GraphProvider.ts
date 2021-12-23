@@ -12,7 +12,7 @@ export class GraphProvider extends Disposable implements vscode.TextDocumentCont
     private extensionPath: string;
     panelWindow: vscode.WebviewPanel;
     private listFile:{fileName:string, dateCreation:Date, size:number}[] = [];
-	private htmlListFile = '';
+	private htmlListFile = '<table>';
 
     constructor(context: vscode.ExtensionContext) {
 		super();
@@ -59,6 +59,9 @@ export class GraphProvider extends Disposable implements vscode.TextDocumentCont
 			this.htmlListFile += "</tr>";
 		});
 
+		this.htmlListFile += '</table>';
+
+
         this.panelWindow.iconPath = vscode.Uri.file('/resources/cmd-icon-dark.svg');
         this.panelWindow.webview.html = this.getHtmlForWebview();
 
@@ -80,30 +83,9 @@ export class GraphProvider extends Disposable implements vscode.TextDocumentCont
     public getHtmlForWebview() {
 
 		let body = `<body>
-			<div id="view" tabindex="-1">
-				<div id="controls">
-					<span id="repoControl"><span class="unselectable">Repo: </span><div id="repoDropdown" class="dropdown"></div></span>
-					<span id="branchControl"><span class="unselectable">Branches!: </span><div id="branchDropdown" class="dropdown"></div></span>
-					<label id="showRemoteBranchesControl"><input type="checkbox" id="showRemoteBranchesCheckbox" tabindex="-1"><span class="customCheckbox"></span>Show Remote Branches</label>
-					<div id="findBtn" title="Find"></div>
-					<div id="terminalBtn" title="Open a Terminal for this Repository"></div>
-					<div id="settingsBtn" title="Repository Settings"></div>
-					<div id="fetchBtn"></div>
-					<div id="refreshBtn"></div>
-					1
+				<div class="container" style="margin-top: 60px;">
+					<gradient-theme data=${this.htmlListFile}>
 				</div>
-				2
-				<div id="content">
-				3
-					<div id="commitGraph"></div>
-					4
-					<div id="commitTable">5
-					${this.htmlListFile}
-					</div>
-				</div>
-				<div id="footer"></div>
-			</div>
-			<div id="scrollShadow"></div>
 			</body>`;
 
 		return `<!DOCTYPE html>
@@ -113,7 +95,9 @@ export class GraphProvider extends Disposable implements vscode.TextDocumentCont
 				<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; script-src; img-src data:;">
 				<meta name="viewport" content="width=device-width, initial-scale=1.0">
 				<link rel="stylesheet" type="text/css" href="${this.getMediaUri('out.min.css')}">
-				<title>Git Graph</title>
+				<link rel="stylesheet" type="text/css" href="/resources/gradient/gradient.css">
+				<script src="app.js" async defer type="module"></script>
+				<title>Nightwatch Graph</title>
                 </head>
                 ${body}
                 </html>`;

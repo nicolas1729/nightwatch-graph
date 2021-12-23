@@ -37,43 +37,6 @@ export function activate(context: vscode.ExtensionContext) {
 	);
 
 
-
-
-	function getHtmlForWebview() {
-
-		let body = `<body>
-			<div id="view" tabindex="-1">
-				<div id="controls">
-					<span id="repoControl"><span class="unselectable">Repo: </span><div id="repoDropdown" class="dropdown"></div></span>
-					<span id="branchControl"><span class="unselectable">Branches:( : </span><div id="branchDropdown" class="dropdown"></div></span>
-					<label id="showRemoteBranchesControl"><input type="checkbox" id="showRemoteBranchesCheckbox" tabindex="-1"><span class="customCheckbox"></span>Show Remote Branches</label>
-					<div id="findBtn" title="Find"></div>
-					<div id="terminalBtn" title="Open a Terminal for this Repository"></div>
-					<div id="settingsBtn" title="Repository Settings"></div>
-					<div id="fetchBtn"></div>
-					<div id="refreshBtn"></div>
-				</div>
-				<div id="content">
-					<div id="commitGraph"></div>
-					<div id="commitTable"></div>
-				</div>
-				<div id="footer"></div>
-			</div>
-			<div id="scrollShadow"></div>
-			</body>`;
-
-		return `<!DOCTYPE html>
-		<html lang="en">
-			<head>
-				<meta charset="UTF-8">
-				<meta name="viewport" content="width=device-width, initial-scale=1.0">
-				<title>Git Graph</title>
-			</head>
-			${body}
-		</html>`;
-	}
-
-
 }
 
 
